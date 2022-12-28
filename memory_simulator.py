@@ -59,12 +59,9 @@ def starting_message(message):
 def send_text(message):
     if message.from_user.id in list_id:
         global string_words, s
-        m = str(message.text).lower()
-        if ' ' in m:
-            m = m.replace(' ', '')
-        if 'ё' in m:
-            m = m.replace('ё', 'е')
-        if m in string_words and m != '':
+        new_list = string_words.split()
+        m = str(message.text).lower().replace(' ', '').replace('ё', 'е')
+        if m in new_list:
             s.add(m)
             bot.send_message(message.from_user.id, text=f'Верно указанных слов: {len(s)}')
         else:

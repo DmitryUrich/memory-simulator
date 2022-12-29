@@ -47,10 +47,14 @@ def starting_message(message):
                                                     f'слова из списка вводи по одному!\n\n'
                                                     f'Постарайся запомнить все слова.\n'
                                                     f'Желаю удачи!')
-        time.sleep(5)
+        start_1 = time.time()
+        while int(time.time() - start_1) != 5:
+            pass
         pull_words()
         del_msg = bot.send_message(message.from_user.id, text=f'{string_words}')
-        time.sleep(120)
+        start_2 = time.time()
+        while int(time.time() - start_2) != 120:
+            pass
         bot.delete_message(message.from_user.id, del_msg.id)
         bot.send_message(message.from_user.id, text=f'Вводи слово: ')
 
